@@ -1,0 +1,50 @@
+CREATE DATABASE CDDA;
+USE CDDA;
+
+create table Historia(
+Idhistoria INT (5),
+Descripción VARCHAR (50),
+Status VARCHAR (20),
+primary key (Idhistoria)
+);
+
+create table Desarrollador(
+Iddesarrollador INT (5),
+Nombre VARCHAR (50),
+primary key (Iddesarrollador)
+);
+
+create table Modulos(
+Idmodulo INT (5),
+Nombre VARCHAR (50),
+primary key (Idmodulo)
+);
+
+create table Rol(
+Idrol INT (5),
+Nombre VARCHAR (50),
+primary key (Idrol)
+);
+
+create table Usuario (
+Idusuario INT (5),
+Email VARCHAR (32),
+Password BIGINT (50),
+Idrol INT (5),
+foreign key (Idrol) references Rol (Idrol)
+);
+
+create table Permisos (
+Idpermiso INT (5),
+Idrol INT (5),
+Idmodulo INT (5),
+Leer BOOLEAN,
+Escribir BOOLEAN,
+Editar BOOLEAN,
+Eliminar BOOLEAN,
+Accesar BOOLEAN,
+foreign key (Idrol) references Rol (Idrol),
+foreign key (Idmodulo) references Modulos (Idmodulo)
+);
+
+
